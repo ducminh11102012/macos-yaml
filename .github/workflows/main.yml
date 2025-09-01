@@ -1,0 +1,19 @@
+name: SSHX Runner on macOS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-sshx:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install sshx
+        run: curl -sSf https://sshx.io/get | sh
+
+      - name: Run sshx
+        run: sshx
